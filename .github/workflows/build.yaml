@@ -1,0 +1,58 @@
+name: Build
+
+on:
+    pull_request:
+
+jobs:
+    build:
+        name: "Admin Assets"
+        runs-on: ubuntu-latest
+
+        env:
+            COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        steps:
+            - name: Checkout project
+              uses: actions/checkout@v2
+
+            - name: Install and configure PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.1
+                  extensions: 'ctype, iconv, mysql, gd'
+                  tools: 'composer:v2'
+                  coverage: none
+
+            - name: Install composer dependencies
+              uses: ramsey/composer-install@v2
+
+            - name: Install and configure Node
+              uses: actions/setup-node@v2-beta
+              with:
+                  node-version: 14
+
+            - name: Install npm
+              run: npm install --global npm@6
+
+            - name: Install npm dependencies
+              uses: bahmutov/npm-install@v1
+              with:
+                  working-directory: assets/admin
+                  useLockFile: false
+
+            - name: Build
+              run: |
+                  cd assets/admin
+                  npm run build
+
+            - name: Upload Build
+              uses: actions/upload-artifact@v3
+              with:
+                  name: admin-assets
+                  path: public/build/admin
+
+            - name: Upload Build
+              uses: actions/upload-artifact@v3
+              with:
+                  name: package-lock
+                  path: assets/admin/package-lock.json
