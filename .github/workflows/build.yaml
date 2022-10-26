@@ -1,0 +1,33 @@
+name: Build
+
+on:
+    pull_request:
+
+jobs:
+    build:
+        name: "Admin Assets"
+        runs-on: ubuntu-latest
+
+        env:
+            COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        steps:
+            -   name: Checkout project
+                uses: actions/checkout@v2
+
+            -   name: Install and configure Node
+                uses: actions/setup-node@v2-beta
+                with:
+                    node-version: 14
+
+            -   name: Install npm
+                run: npm install --global npm@6
+
+            -   name: Install npm dependencies
+                uses: bahmutov/npm-install@v1
+                with:
+                    working-directory: assets/admin
+                    useLockFile: false
+
+            -   name: Build
+                run: npm run build
