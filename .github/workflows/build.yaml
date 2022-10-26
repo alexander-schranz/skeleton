@@ -50,3 +50,9 @@ jobs:
               with:
                   name: admin-assets
                   path: public/build/admin
+
+            - name: Upload Build
+              uses: actions/upload-artifact@v3
+              with:
+                  name: package-lock
+                  path: assets/admin/package-lock.json
