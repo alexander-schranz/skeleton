@@ -1,0 +1,33 @@
+#sulu_route:
+#    mappings:
+#        Sulu\Bundle\ArticleBundle\Document\ArticleDocument:
+#            generator: "schema"
+#            options:
+#                route_schema: "/articles/{object.getTitle()}"
+#        Sulu\Bundle\ArticleBundle\Document\ArticlePageDocument:
+#            generator: "article_page"
+#            options:
+#                route_schema: "/{translator.trans(\"page\")}-{object.getPageNumber()}"
+#                parent: "{object.getParent().getRoutePath()}"
+
+sulu_core:
+    content:
+        structure:
+            default_type:
+                article: "article"
+
+sulu_article:
+#    storage: 'experimental'
+    index_name: '%env(SULU_ARTICLE_INDEX)%'
+    hosts: ['%env(ELASTICSEARCH_HOST)%']
+    default_main_webspace: 'example'
+    default_additional_webspaces: []
+
+ongr_elasticsearch:
+    analysis:
+        tokenizer:
+            pathTokenizer:
+               type: path_hierarchy
+        analyzer:
+            pathAnalyzer:
+                tokenizer: pathTokenizer

@@ -32,6 +32,7 @@ return [
     Sulu\Bundle\RouteBundle\SuluRouteBundle::class => ['all' => true],
     Sulu\Bundle\MarkupBundle\SuluMarkupBundle::class => ['all' => true],
     DTL\Bundle\PhpcrMigrations\PhpcrMigrationsBundle::class => ['all' => true],
+    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
     Massive\Bundle\BuildBundle\MassiveBuildBundle::class => ['all' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
     Sulu\Bundle\TestBundle\SuluTestBundle::class => ['dev' => true, 'test' => true],
@@ -40,8 +41,9 @@ return [
     Sulu\Bundle\PreviewBundle\SuluPreviewBundle::class => ['all' => true],
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
     Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle::class => ['all' => true, 'website' => true],
-    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
     Sulu\Bundle\ActivityBundle\SuluActivityBundle::class => ['all' => true],
     Sulu\Bundle\TrashBundle\SuluTrashBundle::class => ['all' => true],
     Scheb\TwoFactorBundle\SchebTwoFactorBundle::class => ['all' => true],
+    Sulu\Bundle\ArticleBundle\SuluArticleBundle::class => ['all' => true],
+    ONGR\ElasticsearchBundle\ONGRElasticsearchBundle::class => ['all' => true],
 ];
