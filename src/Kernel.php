@@ -19,9 +19,13 @@ use Sulu\Component\HttpKernel\SuluKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\TerminableInterface;
 
 class Kernel extends SuluKernel implements HttpCacheProvider
 {
+    /**
+     * @var (HttpKernelInterface&TerminableInterface)|null
+     **/
     private ?HttpKernelInterface $httpCache = null;
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
@@ -31,7 +35,7 @@ class Kernel extends SuluKernel implements HttpCacheProvider
         parent::configureContainer($container, $loader);
     }
 
-    public function getHttpCache(): HttpKernelInterface
+    public function getHttpCache(): HttpKernelInterface&TerminableInterface
     {
         if (!$this->httpCache instanceof HttpKernelInterface) {
             $this->httpCache = new SuluHttpCache($this);

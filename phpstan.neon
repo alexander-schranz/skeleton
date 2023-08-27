@@ -1,8 +1,10 @@
 parameters:
     paths:
+        - bin
         - src
         - tests
         - config
+        - public
     level: max
     doctrine:
         objectManagerLoader: tests/phpstan/object-manager.php
