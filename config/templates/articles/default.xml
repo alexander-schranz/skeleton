@@ -4,15 +4,15 @@
           xmlns:xi="http://www.w3.org/2001/XInclude"
           xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
-    <key>blog</key>
+    <key>default</key>
 
-    <view>articles/blog</view>
-    <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+    <view>articles/default</view>
+    <controller>Sulu\Bundle\ArticleBundle\Controller\WebsiteArticleController::indexAction</controller>
     <cacheLifetime>144000</cacheLifetime>
 
     <meta>
-        <title lang="en">Blog</title>
-        <title lang="de">Blog</title>
+        <title lang="en">Default</title>
+        <title lang="de">Standard</title>
     </meta>
 
     <tag name="sulu_article.type" type="article"/>
@@ -27,12 +27,14 @@
             <params>
                 <param name="headline" value="true"/>
             </params>
+
+            <tag name="sulu.rlp.part"/>
         </property>
 
-        <property name="routePath" type="page_tree_route">
+        <property name="routePath" type="route">
             <meta>
-                <title lang="en">Page Tree Route</title>
-                <title lang="de">Page Tree Route</title>
+                <title lang="en">Resourcelocator</title>
+                <title lang="de">Adresse</title>
             </meta>
 
             <tag name="sulu_article.article_route"/>
