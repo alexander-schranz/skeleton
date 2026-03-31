@@ -27,7 +27,11 @@
             <tag name="sulu.rlp.part"/>
         </property>
 
-        <property name="url" type="page_tree_route">
+        <!-- articles can use `page_tree_route` or `route` field type
+            https://docs.sulu.io/3.x/reference/property-types/route.html
+            https://docs.sulu.io/3.x/reference/property-types/page_tree_route.html
+        -->
+        <property name="url" type="page_tree_route" mandatory="true">
             <meta>
                 <title lang="en">Resourcelocator</title>
                 <title lang="de">Adresse</title>

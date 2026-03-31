@@ -11,7 +11,7 @@ controllers:
     resource: routing.controllers
 
 # If you have a simple login on your website activate the following routes
-# See also: https://docs.sulu.io/en/2.6/cookbook/user-context-caching.html
+# See also: https://docs.sulu.io/en/3.x/cookbook/user-context-caching.html
 #
 #login:
 #    path: /login
